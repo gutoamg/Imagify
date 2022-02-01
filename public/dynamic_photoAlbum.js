@@ -1,4 +1,4 @@
-//require('dotenv').config();
+require('dotenv').config();
 // ------------------------ METHODS ------------------------
 // Gets the photos from API in Json format
 // Returns false if it fails to fetch
@@ -7,7 +7,7 @@ const get_data = async url => {
     try {
         response = await fetch(url, {
             headers: {
-                Authorization: "563492ad6f917000010000010335b7dbd724430f88cdb3fdb7b544f1"
+                Authorization: process.env.API_KEY
             }
         });
     } catch (err) { // If there was some server error
@@ -211,7 +211,7 @@ const imageObserver = new IntersectionObserver((entries, imgObserver) => {
             if (page.errorMsg) {
                 return;
             }
-            //loadImages(page);
+            loadImages(page);
         } else if (entry.isIntersecting && (entry.target.className === "visible-img toObserve")) {
             // Logic for unloaded images appearing on page 
             const lazyImage = entry.target
@@ -298,7 +298,7 @@ Array.prototype.slice.call(document.getElementsByClassName("toObserve")).forEach
 });
 
 // First image request
-//loadImages(page);
+loadImages(page);
 
 
 // <<<<<<<<<<<<<<< EVENT LISTENERS >>>>>>>>>>>>>>>>
@@ -333,7 +333,7 @@ document.getElementsByTagName("html")[0].addEventListener("click", e => {
         page.theme = "nature";
         page.errorMsg = true;
         resetImgs();
-        //loadImages(page);
+        loadImages(page);
     } else if (e.target.className === "search-bar__search") {
         if (searchInput.value === "")
             return;
@@ -341,7 +341,7 @@ document.getElementsByTagName("html")[0].addEventListener("click", e => {
         page.theme = searchInput.value;
         page.errorMsg = true;
         resetImgs();
-        //loadImages(page);
+        loadImages(page);
     } else if (e.target.className === "search-bar__clear") {
         searchInput.value = "";
         searchInput.focus();
@@ -363,7 +363,7 @@ document.getElementsByClassName("search-bar__input")[0].addEventListener("keyup"
         page.theme = searchInput.value;
         page.errorMsg = true;
         resetImgs();
-        //loadImages(page);
+        loadImages(page);
     }
   }); 
 
