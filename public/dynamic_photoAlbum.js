@@ -1,8 +1,7 @@
-require('dotenv').config();
 // ------------------------ METHODS ------------------------
 // Gets the photos from API in Json format
 // Returns false if it fails to fetch
-const get_data = async url => {
+const get_data_try = async url => {
     var response = false;
     try {
         response = await fetch(url, {
@@ -18,6 +17,22 @@ const get_data = async url => {
     if (treatedResponse.total_results === 0 || resultsCount > treatedResponse.total_results) // If there are no results
         return false;
     return treatedResponse;
+};
+
+
+const get_data = async url => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({"url": url})
+    };
+    const sendData = await fetch("/", fetchOptions);
+    var receiveData = await sendData.json();
+    console.log(receiveData.response);
+    return receiveData.response;
 };
 
 
