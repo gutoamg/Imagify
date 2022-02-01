@@ -1,0 +1,16 @@
+{
+  "name": "imagify",
+  "version": "1.0.0",
+  "description": "Responsive photo album using Pexels api and Intersection Observer",
+  "main": "index.html",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Augusto M. Gouveia",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
