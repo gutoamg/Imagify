@@ -1,0 +1,599 @@
+$card-spaces: 10px;
+$search-button-width: 40px;
+$main-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(223, 223, 223);
+}
+
+.navBar {
+    display: none;
+    z-index: 3;
+    width: 150px;
+    height: 40px;
+    transform: translateX(-50%);
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    background-color: rgba($color: white, $alpha: 0.35);
+    border-radius: 5px;
+}
+
+.fullscreen {
+    z-index: 4;
+    display: none;
+    width: 0vw;
+    height: 0vh;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgba($color: white, $alpha: 0.8);
+    transition: all 200ms ease-in;
+    background-size: cover;
+
+    &__exit {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        transform: scale(1);
+        right: 30px;
+        top: 30px;
+        fill: black;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+            fill: rgba($color: rgb(50, 50, 50), $alpha: 1.0);
+        }
+    }
+
+    &__picture {
+        width: 80%;
+        height: 90%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 5px;
+
+        object-fit: cover;
+        object-position: center;
+        -o-object-fit: cover;
+        object-position: center;
+    }
+}
+
+.menu {
+    display: block;
+    width: 100%;
+    height: 60px;
+    position: relative;
+    transform: translateX(-50%);
+    top: 0px;
+    left: 50%;
+    background-color: rgba($color: white, $alpha: 1.0);
+    border-bottom: 1px solid rgb(170, 170, 170);
+    overflow: hidden;
+
+    &__container {
+        width: 100%;
+        max-width: 500px;
+        height: 100%;
+        float: left;
+        position: relative;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+    }
+
+    &__name {
+        width: auto;
+        height: 60px;
+        line-height: 60px;
+        position: relative;
+        transform: translateY(-50%);
+        top: 50%;
+        float: left;
+        font-family: $main-font;
+        font-size: 40px;
+        font-weight: 700;
+        color: rgb(0, 0, 0);
+        background-color: rgba(255, 255, 255, 0.3);
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.search-bar {
+    width: 80%;
+    max-width: 300px;
+    height: 32px;
+    transform: translate(0%, -50%);
+    position: relative;
+    top: 50%;
+    float: right;
+    margin-left: 20px;
+    color: rgb(90, 90, 90);
+    background-color: rgba($color: rgb(240, 240, 240), $alpha: 1);
+    border-radius: 5px;
+
+    &:focus, &:focus-visible {
+        background-color: rgba($color: rgb(230, 230, 230), $alpha: 1.0);
+    }
+    
+    &__label { //For accessibility
+        width: 1px;
+        opacity: 0;
+        position: absolute;
+    }
+    
+    &__input {
+        width: calc(100% - #{$search-button-width} - #{$search-button-width});
+        height: 100%;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        background-color: rgba($color: rgb(240, 240, 240), $alpha: 1);
+        border: none;
+        border-radius: 5px 0px 0px 5px;
+        padding-left: $card-spaces;
+        text-align: left;
+        font-size: 15px;
+        line-height: 32px;
+
+        &:focus {
+            background-color: rgba($color: rgb(230, 230, 230), $alpha: 1.0);
+            outline: none;
+        }
+
+        &:focus ~ .search-bar__clear {
+            background-color: rgba($color: rgb(230, 230, 230), $alpha: 1.0);
+        }
+        
+        &:focus-visible {
+            border: none;
+            outline: none;
+        }
+
+        &:focus-visible ~ .search-bar__clear {
+            background-color: rgba($color: rgb(230, 230, 230), $alpha: 1.0);
+        }
+    }
+
+    &__clear {
+        width: $search-button-width;
+        height: 100%;
+        position: relative;
+        transform: translateY(-50%);
+        top: 50%;
+        right: 0px;
+        float: right;
+        margin-left: auto;
+        border: none;
+        background-color: rgba($color: rgb(240, 240, 240), $alpha: 1);
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            
+            background: url(".images/exit-icon.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-attachment: initial;
+        }
+    }
+
+    &__search {
+        width: $search-button-width;
+        height: 100%;
+        position: relative;
+        transform: translateY(-50%);
+        top: 50%;
+        right: 0px;
+        float: right;
+        margin-left: auto;
+        border: none;
+        background-color: #e9e9ed;
+        border-radius: 0px 5px 5px 0px;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+
+            background-image: url("./images/search-icon.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-attachment: initial;
+        }
+    }
+}
+
+// input[type=text] {
+//     background-color: white;
+//     background-image: url('searchicon.png');
+//     background-position: 10px 10px;
+//     background-repeat: no-repeat;
+//     padding-left: 40px;
+// }
+
+// input[type=text] {
+//     transition: width 0.4s ease-in-out;
+// }
+
+// input[type=text]:focus {
+//   width: 100%;
+//   border: none;
+// }
+
+#gallery {
+    width: 90%;
+    max-width: 900px;
+    min-height: 10px;
+    position: relative;
+    transform: translateX(-50%);
+    top: 0px;
+    left: 50%;
+    margin-top: 1.1%;
+    background-color: transparent;
+}
+
+#images-container {
+    width: 100%;
+    min-height: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    float: left;
+    background-color: white;
+    border-radius: 5px;
+    // overflow: hidden;
+}
+
+.image {
+    z-index: 1;
+    width: 32.2%;
+    min-width: 100px;
+    height: 300px;
+    position: relative;
+    float: left;
+    margin: 0.5666%;
+    border-radius: 8px;
+    border-collapse: separate;
+    background-color: rgb(150, 150, 150);
+    overflow: hidden;
+    transition: transform 100ms ease-in;
+
+    &:hover {
+        cursor: zoom-in;
+        transform: translate(0px, -3px);
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    &:hover > .photo-name {
+        opacity: 1;
+    }
+
+    &:hover > .photographer-info {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.visible-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border-collapse: separate;
+
+    background: no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.photo-name {
+    width: 101%;
+    height: 38px;
+    line-height: 38px;
+    position: absolute;
+    bottom: 0px;
+    padding-left: $card-spaces;
+    font-family: $main-font;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+    opacity: 0;
+    transition: opacity 200ms linear;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+.photographer-info {
+    display: block;
+    width: 100%;
+    height: 46px;
+    position: absolute;
+    transform: translateY(-120%);
+    opacity: 0;
+    top: 0px;
+    padding-left: $card-spaces;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: transform 50ms linear, opacity 300ms linear;
+
+    .photographer-img {
+        width: 40px;
+        height: 40px;
+        transform: translate(0%, -50%);
+        position: relative;
+        top: 50%;
+        left: 0%;
+        float: left;
+        clear: both;
+        border-radius: 50%;
+    }
+
+    .photographer-name {
+        height: 46px;
+        line-height: 46px;
+        position: relative;
+        bottom: 0px;
+        padding-left: $card-spaces;
+        padding-right: $card-spaces;
+        font-family: $main-font;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        background-color: transparent;
+        text-align: left;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        vertical-align: middle;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: underline;
+            text-decoration-color: white;
+            color: rgb(255, 255, 255);
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.indicators {
+    &__container {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        left: 0px;
+        float: left;
+        background-color: transparent;
+    }
+
+    &__loading {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        background-color: transparent;
+
+        // background: url("./Loading_icon.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+        animation: loading 0.5s infinite ease-in-out;
+    }
+
+    &__message {
+        display: none;
+        width: 100%;
+        font-family: $main-font;
+        font-size: 18px;
+        line-height: 40px;
+        color: rgb(27, 27, 27);
+        background-color: transparent;
+        text-align: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .menu {
+        width: 100%;
+    }
+    
+    #gallery {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu {
+        width: 100%;
+        height: 120px;
+
+        &__container {
+            width: 100%;
+            max-width: 500px;
+        }
+    
+        &__name {
+            display: block;
+            float: none;
+            transform: translateX(-50%);
+            top: 0px;
+            left: 50%;
+        }
+    }
+
+    .search-bar {
+        display: block;
+        height: 35px;
+        float: none;
+        transform: translateX(-50%);
+        top: 0px;
+        left: 50%;
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    #gallery {
+        width: 100%;
+    }
+
+    .image {
+        width: 48.5%;
+        min-width: 10px;
+        margin: 0.75%;
+    }
+}
+
+@media (max-width: 400px) {
+    .menu {
+        width: 100%;
+        height: 120px;
+
+        &__container {
+            width: 100%;
+            max-width: 500px;
+        }
+    
+        &__name {
+            display: block;
+            float: none;
+            transform: translateX(-50%);
+            top: 0px;
+            left: 50%;
+        }
+    }
+
+    .search-bar {
+        display: block;
+        height: 35px;
+        float: none;
+        transform: translateX(-50%);
+        top: 0px;
+        left: 50%;
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    #gallery {
+        width: 100%;
+    }
+
+    .image {
+        width: 96%;
+        min-width: 10px;
+        margin: 1% 2% 1% 2%;
+    }
+}
+
+// For touch screens
+@media screen and (hover: none) and (pointer: coarse) {
+    .photo-name {
+        opacity: 1;
+    }
+
+    .photographer-info {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    
+}
+
+// Blurred background for some elements
+@supports ((-webkit-backdrop-filter: blur()) or (backdrop-filter: blur())) or (-webkit-backdrop-filter: blur()) {
+    .navBar {
+        background: transparent;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .fullscreen {
+        background: transparent;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .photo-name {
+        background: transparent;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.4);
+    }   
+
+    .photographer-info {
+        background: transparent;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.4);
+    }  
+
+    // #images-container {
+    //     background: transparent;
+    //     backdrop-filter: blur(5px);
+    //     -webkit-backdrop-filter: blur(5px);
+    //     background-color: rgba(255, 255, 255, 0.4);
+    // }
+}
+  
+@keyframes loading {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    } to {
+        transform: translate(-50%, -50%) rotate(120deg);
+    }
+}
+
+// Descrease indicators__message line height

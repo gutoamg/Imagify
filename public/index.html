@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./newcss.css">
+</head>
+<body>
+
+    <section class="navBar"></section>
+
+    <section class="fullscreen">
+        <img src="" alt="Fullscreen picture" class="fullscreen__picture"><svg class="fullscreen__exit" width="54" height="54" viewBox="0 0 54 54" fill="black" xmlns="http://www.w3.org/2000/svg">
+            <path d="M45.1736 2.72649L44.4666 2.01946L43.7595 2.7264L26.7875 19.6945L9.81948 2.72649L9.11237 2.01938L8.40526 2.72649L2.5136 8.61815L1.80649 9.32526L2.5136 10.0324L19.4815 27.0003L2.5136 43.9682L1.80649 44.6753L2.5136 45.3824L8.40526 51.274L9.11237 51.9811L9.81948 51.274L26.7875 34.3061L43.7595 51.2741L44.4666 51.9811L45.1736 51.274L51.0653 45.3824L51.7724 44.6753L51.0653 43.9682L34.0974 27.0003L51.0653 10.0324L51.7724 9.32526L51.0653 8.61815L45.1736 2.72649Z" stroke="white" stroke-width="2"/>
+        </svg>
+    </section>
+
+    <section class="menu">
+        <div class="menu__container">
+            <a href="#0" class="menu__name">IMAGIFY</a>
+            <div class="search-bar">
+                <label class="search-bar__label" for="search-input">Search image</label>
+                <input 
+                    type="text" 
+                    name="Search image" 
+                    placeholder="Search image" 
+                    spellcheck="true"
+                    id="search-input"
+                    class="search-bar__input" 
+                    results="3"
+                >
+                <button class="search-bar__search" type="submit"></button>
+                <button class="search-bar__clear" type="submit"></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div id="images-container">
+            <!-- <div data-bigImgSrc="https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg" data-photo-name="Some name" data-photographer="Luigi link" class="image">
+                <img class="visible-img toObserve" src="" data-src="https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg" alt="">
+                <p class="photo-name">Photo name</p>
+                <a href="#0" class="photographer-info" rel="noopener" target="_blank">
+                    <img src="https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg" alt="" class="photographer-img">
+                    <h3 class="photographer-name">Photographer name</h3>
+                </a>    
+            </div> -->
+        </div>
+        <div class="indicators indicators__container toObserve">
+            <img class="indicators indicators__loading" src="./images/Loading_icon.png" alt="Loading icon">
+            <h3 class="indicators indicators__message"></h3>
+        </div>
+    </section>
+
+
+
+
+
+    <script type="text/javascript" src="./dynamic_photoAlbum.js"></script>
+</body>
+</html>
