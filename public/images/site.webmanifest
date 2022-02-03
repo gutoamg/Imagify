@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Imagify",
+    "short_name": "Imagify",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
